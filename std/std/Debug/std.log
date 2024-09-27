@@ -1,0 +1,19 @@
+﻿  std.cpp
+C:\Users\пк\std\std\std\std.cpp(15,21): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+C:\Users\пк\std\std\std\std.cpp(19,24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\пк\std\std\std\myLib.h(237,25): warning C4018: <: несоответствие типов со знаком и без знака
+  (компиляция исходного файла "std.cpp")
+      C:\Users\пк\std\std\std\myLib.h(237,25):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\пк\std\std\std\std.cpp(19,22):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "myLib::ListAI<int>"
+          C:\Users\пк\std\std\std\myLib.h(236,3):
+          во время компиляции функции-члена класс шаблон "myLib::ListAI<int>::ListAI(int,const T)"
+          with
+          [
+              T=int
+          ]
+              C:\Users\пк\std\std\std\std.cpp(19,23):
+              см. первую ссылку на "myLib::ListAI<int>::ListAI" в "main"
+  
+  std.vcxproj -> C:\Users\пк\std\std\Debug\std.exe
