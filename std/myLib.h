@@ -46,11 +46,12 @@ namespace myLib {
 				for (size_t i = 0; i < size; i++) {
 					newData[i] = Data[i];
 				}
+				delete[] Data;
 				Data = newData;
 				delete[] newData;
 			}
-			size++;
 			Data[size] = t;
+			size++;
 		}
 		constexpr int at(int Pos)
 		{
@@ -92,7 +93,7 @@ namespace myLib {
 			capacity = other.capacity;
 			Data = other.Data;
 			other.Data = nullptr; 
-
+			return *this;
 		}
 		T& operator[](unsigned int pos) {
 			return Data[pos];
@@ -100,7 +101,6 @@ namespace myLib {
 		void clear()
 		{
 			size = 0;
-			delete Data;
 		}
 		~Vector()
 		{
