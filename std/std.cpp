@@ -12,5 +12,6 @@ int main()
 	myLib::Vector<int> v1{1,2,3};
 	myLib::Vector<int> v2 = v1;
 	std::vector<int> vec{ 1,2,3 };
-	
+	std::deque<int> deq{ 1,2,3 };
+	deq.insert(deq.begin(),vec.begin(),vec.end());
 }

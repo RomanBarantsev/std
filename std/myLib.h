@@ -223,4 +223,12 @@ namespace myLib {
 			m_size++;
 		}
 	};
+
+	template <typename T>
+	class Deque {
+	private:
+
+	public:
+
+	};
 }
