@@ -12,6 +12,11 @@ namespace myLib {
 		Vector() {
 			Data = new T[capacity];
 		}
+		Vector(Vector& other) {
+			Data = other.Data;
+			size = other.size;
+			capacity = other.capacity;
+		}
 		Vector(std::initializer_list<T> list) {
 			capacity = list.size();
 			Data = new T[capacity];
@@ -217,11 +222,5 @@ namespace myLib {
 
 			m_size++;
 		}
-	};
-
-	template <typename T>
-	class Deque {
-	private:
-
 	};
 }
