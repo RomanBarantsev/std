@@ -14,4 +14,5 @@ int main()
 	std::vector<int> vec{ 1,2,3 };
 	std::deque<int> deq{ 1,2,3 };
 	deq.insert(deq.begin(),vec.begin(),vec.end());
+	myLib::Deque<int> d1{ 1,2,3 };
 }

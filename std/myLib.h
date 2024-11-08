@@ -227,8 +227,41 @@ namespace myLib {
 	template <typename T>
 	class Deque {
 	private:
+		struct Node {
+			Node* next=nullptr;
+			Node* prev=nullptr;
+			T* data=nullptr;
+			int* size = nullptr;
+			int* capacity = new int(10);
+		};
+		List<Node> nodes;
+		Node* allocMemory(Node* node) {
+			Node* newNode = new Node;
+			if (node->next == nullptr)
+			{
+				nodes.
+			}
+			else
+			{
 
+			}
+			return newNode;
+		}
 	public:
+		Deque(std::initializer_list<T> list) {
+			for (size_t i = 0; i < list.size(); i++)
+			{
 
+			}
+		}
+		Deque(Deque other){
+			return *this;
+		}
+		~Deque() {
+
+		}
+		Deque operator=(const Deque& other) {
+
+		}
 	};
 }
