@@ -8,7 +8,7 @@ namespace myLib {
 		T* Data;
 		size_t size = 0;
 		size_t capacity=4;
-	public:
+	public:		
 		Vector() {
 			Data = new T[capacity];
 		}
@@ -176,7 +176,6 @@ namespace myLib {
 				if (!node->m_next)
 					break;
 				node = node->m_next;
-				node->m_prev = nullptr;
 			} while (node->m_next);
 		}
 		T front(){
@@ -218,9 +217,25 @@ namespace myLib {
 		void assign(const std::initializer_list<T> list) {
 
 		}
-		void push_back(T& t) {
-
+		void push_back(T&& t) {
+			Node* newNode = new Node;
+			lastNode->m_next = newNode;
+			newNode->m_prev = lastNode;
+			lastNode = newNode;
+			lastNode->m_data = new T;
+			lastNode->m_data = &t;
 			m_size++;
+		}
+		void push_front(T&& t) {
+			Node* newNode = new Node;
+			newNode->m_data = new T;
+			newNode->m_data = &t;
+			firstNode->m_prev = newNode;
+			newNode->m_next = firstNode;
+			firstNode = newNode;
+		}
+		List operator[](int pos) {
+
 		}
 	};
 }

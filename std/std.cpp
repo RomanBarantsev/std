@@ -5,12 +5,15 @@
 #include <vector>
 #include <deque>
 #include "myLib.h"
+#include <list>
 //#include "g:\Git\UsefulLibrary\UsefulLibrary\UsefulLibrary.h"
 
 int main()
 {
-	myLib::Vector<int> v1{1,2,3};
-	myLib::Vector<int> v2 = v1;
-	std::vector<int> vec{ 1,2,3 };
+	myLib::List<int> l1{1,2,3};
+	myLib::List<int> l2 = l1;
+	l1.push_back(4);
+	l1.push_front(0);
+	std::cout << l1.front();
 	
 }
