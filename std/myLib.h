@@ -123,14 +123,26 @@ namespace myLib {
 			Node* m_prev = nullptr;
 			T* m_data=nullptr;
 		};
+		myLib::Vector<Node*>* nodePtrs = new myLib::Vector<Node*>;
 		Node* firstNode = nullptr;
 		Node* lastNode = nullptr;
 		int m_size = 0;
 	public:
+		List() {}
+		List(List& other) {
+			Node* prevNode=nullptr;
+			for (size_t i = 0; i < other.size(); i++)
+			{
+				Node* node = new Node;
+				
+			}
+
+		}
 		List(const std::initializer_list<T>& list)
 		{
 			firstNode = new Node;
 			Node* currentNode = firstNode;
+			nodePtrs->push_back(currentNode);
 			for (const auto& it : list)
 			{
 				m_size++;
@@ -142,14 +154,15 @@ namespace myLib {
 				Node* nextNode = new Node;
 				currentNode->m_next = nextNode;
 				nextNode->m_prev = currentNode;
+				nodePtrs->push_back(currentNode);
 				currentNode = nextNode;
-				
 			}
 		}
 		List(int count,const T& data)
 		{
 			firstNode = new Node;
 			Node* currentNode = firstNode;
+			nodePtrs->push_back(currentNode);
 			for (size_t i = 0; i < count; i++)
 			{
 				m_size++;
@@ -161,6 +174,7 @@ namespace myLib {
 				Node* nextNode = new Node;
 				currentNode->m_next = nextNode;
 				nextNode->m_prev = currentNode;
+				nodePtrs->push_back(currentNode);
 				currentNode = nextNode;
 			}
 		}
@@ -235,7 +249,11 @@ namespace myLib {
 			firstNode = newNode;
 		}
 		List operator[](int pos) {
+			return nodePtrs[pos];
+		}
+		List& operator=(const List& other) {
 
+			return *this;
 		}
 	};
 }
