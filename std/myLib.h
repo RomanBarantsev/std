@@ -247,6 +247,20 @@ namespace myLib {
 		const int size() {
 			return m_size;
 		}
+		void clear() {
+			Node* node;
+			if (firstNode)
+				node = firstNode;
+			else
+				return;
+			do
+			{
+				delete node->m_data;
+				node = node->m_next;
+				delete node->m_prev;
+			} while (node);
+			delete node;
+		}
 		void assign(const std::initializer_list<T> list) {
 
 		}

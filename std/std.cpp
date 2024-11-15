@@ -16,6 +16,7 @@ int main()
 	l1.push_back(4);
 	l1.push_front(0);
 	l3 = l1;
+	l3.clear();
 	/*l1.push_back(4);
 	l1.push_front(0);*/
 
