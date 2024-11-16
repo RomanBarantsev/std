@@ -10,6 +10,8 @@
 
 int main()
 {
+	std::list<int> li{1,2,3};
+	li.assign({ 4,5,6 });
 	myLib::List<int> l1{1,2,3};
 	myLib::List<int> l3{1,2,3};
 	l1.push_back(4);

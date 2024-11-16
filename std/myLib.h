@@ -154,13 +154,7 @@ namespace myLib {
 			} while (m_size != other.m_size);
 			lastNode = prevNode;
 		}
-	public:
-		List() {}
-		List(const List& other) {
-			deepCoping(other);
-		}
-		List(const std::initializer_list<T>& list)
-		{
+		void initializerListCopy(const std::initializer_list<T>& list) {
 			firstNode = new Node;
 			Node* currentNode = firstNode;
 			for (const auto& it : list)
@@ -176,6 +170,15 @@ namespace myLib {
 				nextNode->m_prev = currentNode;
 				currentNode = nextNode;
 			}
+		}
+	public:
+		List() {}
+		List(const List& other) {
+			deepCoping(other);
+		}
+		List(const std::initializer_list<T>& list)
+		{
+			initializerListCopy(list);
 		}
 		List(int count,const T& data)
 		{
@@ -197,9 +200,6 @@ namespace myLib {
 		}
 		~List() {
 			clear();
-		}
-		List operator[](int pos) {
-
 		}
 		List& operator=(const List& other) {
 
@@ -263,8 +263,9 @@ namespace myLib {
 			}
 			
 		}
-		void assign(const std::initializer_list<T> list) {
-
+		void assign(const std::initializer_list<T>& list) {
+			clear();
+			initializerListCopy(list);
 		}
 		void push_back(T&& t) {
 			Node* newNode = new Node;
