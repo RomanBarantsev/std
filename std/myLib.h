@@ -130,13 +130,17 @@ namespace myLib {
 		Node* lastNode = nullptr;
 		int m_size = 0;
 		void deepCoping(const List& other) {
+			clear();
+			m_size = 0;
+			firstNode = nullptr;
+			lastNode = nullptr;			
 			Node* prevNode = nullptr;
 			Node* nodeToCopy = other.firstNode;
 			do {
 				m_size++;
 				Node* node = new Node;
 				if (!firstNode) {
-					firstNode = node;
+					firstNode = prevNode;
 				}
 				{
 					node->m_data = new T(*nodeToCopy->m_data);
@@ -192,16 +196,7 @@ namespace myLib {
 			}
 		}
 		~List() {
-			Node* node;
-			if (firstNode)
-				node = firstNode;
-			else
-				return;
-			do
-			{
-				delete node->m_data;
-				node = node->m_next;
-			} while (node);
+			clear();
 		}
 		List operator[](int pos) {
 
@@ -248,18 +243,25 @@ namespace myLib {
 			return m_size;
 		}
 		void clear() {
-			Node* node;
-			if (firstNode)
-				node = firstNode;
-			else
-				return;
-			do
-			{
-				delete node->m_data;
-				node = node->m_next;
-				delete node->m_prev;
-			} while (node);
-			delete node;
+			if (firstNode == lastNode) {
+				delete firstNode->m_data;
+				delete firstNode;
+			}
+			else {
+				Node* node;
+				if (firstNode)
+					node = firstNode;
+				else
+					return;
+				do
+				{
+					delete node->m_data;
+					node = node->m_next;
+					delete node->m_prev;
+				} while (node->m_next);
+				delete node;
+			}
+			
 		}
 		void assign(const std::initializer_list<T> list) {
 

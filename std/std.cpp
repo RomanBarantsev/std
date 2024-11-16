@@ -11,12 +11,17 @@
 int main()
 {
 	myLib::List<int> l1{1,2,3};
-	//myLib::List<int> l2(l1);
 	myLib::List<int> l3{1,2,3};
 	l1.push_back(4);
 	l1.push_front(0);
 	l3 = l1;
-	l3.clear();
+	/*l3.clear();
+	{
+		myLib::List<long long> l{ 100000 };
+		std::vector<myLib::List<long long>> ll(10000000, l);
+
+	}*/
+	
 	/*l1.push_back(4);
 	l1.push_front(0);*/
 
