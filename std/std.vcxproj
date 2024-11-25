@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,10 +140,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MyList.cpp" />
     <ClCompile Include="std.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myLib.h" />
+    <ClInclude Include="MyList.h" />
     <ClInclude Include="std.h" />
     <ClInclude Include="UsefullLib.h" />
   </ItemGroup>
