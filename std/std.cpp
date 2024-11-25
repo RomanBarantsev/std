@@ -4,9 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include "myLib.h"
 #include <list>
-#include "MyList.h"
+#include "List.h"
 //#include "g:\Git\UsefulLibrary\UsefulLibrary\UsefulLibrary.h"
 
 int main()
