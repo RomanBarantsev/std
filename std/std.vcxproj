@@ -139,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Iterator.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="std.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Iterator.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="std.h" />
     <ClInclude Include="UsefullLib.h" />
   </ItemGroup>

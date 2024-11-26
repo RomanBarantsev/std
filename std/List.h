@@ -1,7 +1,7 @@
 #pragma once
 #include "List.cpp"
 #include <initializer_list>
-
+#include <iterator>
 
 template <typename T>
 class List {
@@ -11,10 +11,7 @@ private:
 		Node* m_next = nullptr;
 		Node* m_prev = nullptr;
 		T* m_data = nullptr;
-		Node& operator=(const Node& other) {
-
-		}
-	};
+	};	
 	Node* firstNode = nullptr;
 	Node* lastNode = nullptr;
 	int m_size = 0;
@@ -60,7 +57,7 @@ private:
 			currentNode = nextNode;
 		}
 	}
-public:
+public:	
 	List() {}
 	List(const List& other) {
 		deepCoping(other);
@@ -173,4 +170,33 @@ public:
 		m_size++;
 	}
 
+	template<typename T>	
+	struct Iterator {
+	public:
+		using iterator_category = std::forward_iterator_tag;
+		using different_type = std::ptrdiff_t;
+		using value_type = T;
+		using pointer = T*;
+		using reference = T&;
+		Iterator(Node* node) : m_node(node) {}
+
+	private:
+		Node* m_node;
+
+	public:
+		reference operator*() const { return *m_node->m_data; }
+		pointer operator->() const { return *m_node->m_data; }
+
+		Iterator operator++() {
+			if (m_node) {
+				m_node = m_node->m_next;
+			}
+			return *this;
+		}
+
+		friend bool operator== (const Iterator& a, const Iterator& b) { return a.m_node == b.m_node; }
+		friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_node != b.m_node; }
+	};
+	Iterator<T> begin() { return Iterator<T>(firstNode); }
+	Iterator<T> end() { return Iterator<T>(nullptr); }
 };
