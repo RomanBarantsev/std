@@ -1,6 +1,7 @@
 #pragma once
 #include <initializer_list>
 #include <exception>
+#include<iterator>
 
 template<typename T>
 class Vector {
@@ -111,6 +112,63 @@ public:
 	{
 		delete[] Data;
 	}
+	template<typename T>
+	class Iterator {
+	public:
+		using iterator_category = std::forward_iterator_tag;
+		using different_type = std::ptrdiff_t;
+		using value_type = T;
+		using pointer = T*;
+		using reference = T&;
+		Iterator(pointer data) : m_data(data) {}
+
+	private:
+		pointer m_data;
+
+	public:
+		reference operator*() const { return *m_data; }
+		pointer operator->() const { return m_data; }
+
+		Iterator operator++() {
+			++m_data;
+			return *this;
+		}
+
+
+		friend bool operator== (const Iterator& a, const Iterator& b) { return a.m_data == b.m_data; }
+		friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_data != b.m_data; }
+	};
+	Iterator<T> begin() { return Iterator<T>(Data); }
+	Iterator<T> end() { return Iterator<T>(Data+size); }
+
+	template<typename T>
+	class ReverseIterator {
+	public:
+		using iterator_category = std::forward_iterator_tag;
+		using different_type = std::ptrdiff_t;
+		using value_type = T;
+		using pointer = T*;
+		using reference = T&;
+		ReverseIterator(pointer data) : m_data(data) {}
+
+	private:
+		pointer m_data;
+
+	public:
+		reference operator*() const { return *m_data; }
+		pointer operator->() const { return m_data; }
+
+		ReverseIterator operator++() {
+			--m_data;
+			return *this;
+		}
+
+
+		friend bool operator== (const ReverseIterator& a, const ReverseIterator& b) { return a.m_data == b.m_data; }
+		friend bool operator!= (const ReverseIterator& a, const ReverseIterator& b) { return a.m_data != b.m_data; }
+	};
+	ReverseIterator<T> rbegin() { return ReverseIterator<T>(Data+(size-1)); }
+	ReverseIterator<T> rend() { return ReverseIterator<T>(Data-1); }
 };
 
 
